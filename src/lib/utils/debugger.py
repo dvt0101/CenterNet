@@ -217,8 +217,8 @@ class Debugger(object):
     if not self.ipynb:
       for i, v in self.imgs.items():
         # cv2.imwrite('/home/vietthangtik15/dataset/{}.jpg'.format(str(v[0][0])), v)
-        out_video.write(v)
-        print(out_video.shape)
+        # out_video.write(v)
+        return 0
         # if cv2.waitKey(0 if pause else 1) == 27:
         #   import sys
         #   sys.exit(0)
