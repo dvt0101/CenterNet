@@ -42,6 +42,9 @@ def demo(opt):
           print(time_str)
           # if cv2.waitKey(1) == 27:
               # return  # esc to quit
+        else:
+            break
+            
     end = time.time()
     seconds = end  - start
     print('FPS', num_frame/seconds)
