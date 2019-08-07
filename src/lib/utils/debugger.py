@@ -7,7 +7,7 @@ import cv2
 from .ddd_utils import compute_box_3d, project_to_image, draw_box_3d
 
 class Debugger(object):
-  def __init__(self, ipynb=False, theme='black', 
+  def __init__(self, ipynb=True, theme='black', 
                num_classes=-1, dataset=None, down_ratio=4):
     self.ipynb = ipynb
     if not self.ipynb:
@@ -213,30 +213,27 @@ class Debugger(object):
                                        points[i][j][1] * self.down_ratio),
                    3, (int(c[0]), int(c[1]), int(c[2])), -1)
 
-  def show_all_imgs(self, pause=False, time=0):
-    # if not self.ipynb:
-    id = 0
-    for i, v in self.imgs.items():
-      # print(v.shape)
-      id += 1
-      cv2.imwrite('/home/vietthangtik15/dataset/{}.jpg'.format(str(v[0][0])), v)
-      # cv2.imwrite("/home/vietthangtik15/dataset/ouput/" + i + ".jpg", v) 
-      # if cv2.waitKey(0 if pause else 1) == 27:
-      #   import sys
-      #   sys.exit(0)
-    # else:
-    #   self.ax = None
-    #   nImgs = len(self.imgs)
-    #   fig=self.plt.figure(figsize=(nImgs * 10,10))
-    #   nCols = nImgs
-    #   nRows = nImgs // nCols
-    #   for i, (k, v) in enumerate(self.imgs.items()):
-    #     fig.add_subplot(1, nImgs, i + 1)
-    #     if len(v.shape) == 3:
-    #       self.plt.imshow(cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
-    #     else:
-    #       self.plt.imshow(v)
-    #   # self.plt.show()
+  def show_all_imgs(self, out_video, pause=False, time=0):
+    if not self.ipynb:
+      for i, v in self.imgs.items():
+        # cv2.imwrite('/home/vietthangtik15/dataset/{}.jpg'.format(str(v[0][0])), v)
+        out_video.write(v)
+        # if cv2.waitKey(0 if pause else 1) == 27:
+        #   import sys
+        #   sys.exit(0)
+    else:
+      self.ax = None
+      nImgs = len(self.imgs)
+      fig=self.plt.figure(figsize=(nImgs * 10,10))
+      nCols = nImgs
+      nRows = nImgs // nCols
+      for i, (k, v) in enumerate(self.imgs.items()):
+        fig.add_subplot(1, nImgs, i + 1)
+        if len(v.shape) == 3:
+          self.plt.imshow(cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
+        else:
+          self.plt.imshow(v)
+      # self.plt.show()
 
   def save_img(self, imgId='default', path='/home/vietthangtik15/dataset/'):
     cv2.imwrite(path + '{}.png'.format(imgId), self.imgs[imgId])
