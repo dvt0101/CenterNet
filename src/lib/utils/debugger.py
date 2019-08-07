@@ -216,7 +216,8 @@ class Debugger(object):
   def show_all_imgs(self, pause=False, time=0):
     # if not self.ipynb:
     for i, v in self.imgs.items():
-      print(v.shape)
+      # print(v.shape)
+      print(i)
       cv2.imwrite('/home/vietthangtik15/dataset/{}.jpg'.format(i), v)
       # cv2.imwrite("/home/vietthangtik15/dataset/ouput/" + i + ".jpg", v) 
       # if cv2.waitKey(0 if pause else 1) == 27:
