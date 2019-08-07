@@ -238,6 +238,7 @@ class Debugger(object):
     cv2.imwrite(path + '{}.png'.format(imgId), self.imgs[imgId])
     
   def save_all_imgs(self, path='/home/vietthangtik15/dataset/', prefix='', genID=False):
+    print(path)
     if genID:
       try:
         idx = int(np.loadtxt(path + '/id.txt'))

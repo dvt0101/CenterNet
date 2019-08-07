@@ -91,7 +91,10 @@ class BaseDetector(object):
     elif type(image_or_path_or_tensor) == type (''): 
       image = cv2.imread(image_or_path_or_tensor)
     else:
+      # try:
       image = image_or_path_or_tensor['image'][0].numpy()
+      # except: 
+        # print('NoneType')
       pre_processed_images = image_or_path_or_tensor
       pre_processed = True
     

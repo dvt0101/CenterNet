@@ -6,6 +6,7 @@ import _init_paths
 
 import os
 import cv2
+import time 
 
 from opts import opts
 from detectors.detector_factory import detector_factory
@@ -24,16 +25,22 @@ def demo(opt):
     opt.demo[opt.demo.rfind('.') + 1:].lower() in video_ext:
     cam = cv2.VideoCapture(0 if opt.demo == 'webcam' else opt.demo)
     detector.pause = False
+    start = time.time()
+    num_frame = 0
     while True:
         _, img = cam.read()
+        num_frame += 1
         # cv2.imshow('input', img)
         ret = detector.run(img)
         time_str = ''
         for stat in time_stats:
           time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
         print(time_str)
-        if cv2.waitKey(1) == 27:
-            return  # esc to quit
+        # if cv2.waitKey(1) == 27:
+            # return  # esc to quit
+    end = time.time()
+    seconds = end  - start
+    print('FPS', num_frame/seconds)
   else:
     if os.path.isdir(opt.demo):
       image_names = []
@@ -50,7 +57,6 @@ def demo(opt):
       time_str = ''
       for stat in time_stats:
         time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
-      print("fps", time_str)
 if __name__ == '__main__':
   opt = opts().init()
   demo(opt)
