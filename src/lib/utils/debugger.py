@@ -218,6 +218,7 @@ class Debugger(object):
     for i, v in self.imgs.items():
       # cv2.imshow('{}'.format(i), v)
       cv2.imwrite("/home/vietthangtik15/dataset/ouput/" + i + ".jpg", v)
+      print('done')
       # if cv2.waitKey(0 if pause else 1) == 27:
       #   import sys
       #   sys.exit(0)
