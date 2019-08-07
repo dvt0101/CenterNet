@@ -214,7 +214,6 @@ class Debugger(object):
                    3, (int(c[0]), int(c[1]), int(c[2])), -1)
 
   def show_all_imgs(self, pause=False, time=0):
-    print('show results')
     if not self.ipynb:
       for i, v in self.imgs.items():
         cv2.imshow('{}'.format(i), v)
@@ -233,7 +232,7 @@ class Debugger(object):
           self.plt.imshow(cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
         else:
           self.plt.imshow(v)
-      self.plt.show()
+      # self.plt.show()
 
   def save_img(self, imgId='default', path='/home/vietthangtik15/dataset/'):
     cv2.imwrite(path + '{}.png'.format(imgId), self.imgs[imgId])
