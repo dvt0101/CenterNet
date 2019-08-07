@@ -37,9 +37,9 @@ def demo(opt):
           # ret = detector.run(img, out_video)
           
           time_str = ''
-          for stat in time_stats:
-            time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
-          print(time_str)
+          # for stat in time_stats:
+          #   time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
+          # print(time_str)
           # if cv2.waitKey(1) == 27:
               # return  # esc to quit
         else:
