@@ -20,7 +20,8 @@ def demo(opt):
   opt.debug = max(opt.debug, 1)
   Detector = detector_factory[opt.task]
   detector = Detector(opt)
-
+  fourcc = cv2.VideoWriter_fourcc(*'XVID')
+  out = cv2.VideoWriter('/home/vietthangtik15/dataset/output/output.avi',fourcc, 20.0, (640,480))
   if opt.demo == 'webcam' or \
     opt.demo[opt.demo.rfind('.') + 1:].lower() in video_ext:
     cam = cv2.VideoCapture(0 if opt.demo == 'webcam' else opt.demo)
@@ -32,6 +33,8 @@ def demo(opt):
         num_frame += 1
         # cv2.imshow('input', img)
         ret = detector.run(img)
+        print(ret.shape)
+        out.write(ret)
         time_str = ''
         for stat in time_stats:
           time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
