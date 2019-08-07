@@ -31,9 +31,8 @@ def demo(opt):
     while True:
         re, img = cam.read()
         if re == True:
+          img = cv2.flip(img, 0)
           num_frame += 1
-          # cv2.imshow('input', img)
-          print(img.shape)
           out_video.write(img)
           ret = detector.run(img, out_video)
           
