@@ -33,14 +33,14 @@ def demo(opt):
         num_frame += 1
         # cv2.imshow('input', img)
         ret = detector.run(img)
-        print(type(ret['results']))
-        out.write(ret['results'])
+        # print(type(ret['results']))
+        # out.write(ret['results'])
         time_str = ''
         for stat in time_stats:
           time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
         print(time_str)
-        # if cv2.waitKey(1) == 27:
-            # return  # esc to quit
+        if cv2.waitKey(1) == 27:
+            return  # esc to quit
     end = time.time()
     seconds = end  - start
     print('FPS', num_frame/seconds)
