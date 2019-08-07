@@ -21,7 +21,7 @@ def demo(opt):
   Detector = detector_factory[opt.task]
   detector = Detector(opt)
   fourcc = cv2.VideoWriter_fourcc(*'XVID')
-  out_video = cv2.VideoWriter('/home/vietthangtik15/dataset/output/output.avi',fourcc, 20.0, (640,480))
+  out_video = cv2.VideoWriter('/home/vietthangtik15/dataset/output/output.avi',fourcc, 20.0, (1520,2704))
   if opt.demo == 'webcam' or \
     opt.demo[opt.demo.rfind('.') + 1:].lower() in video_ext:
     cam = cv2.VideoCapture(0 if opt.demo == 'webcam' else opt.demo)
