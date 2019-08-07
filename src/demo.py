@@ -33,6 +33,7 @@ def demo(opt):
         if re == True:
           num_frame += 1
           # cv2.imshow('input', img)
+          print(img.shape)
           out_video.write(img)
           ret = detector.run(img, out_video)
           
@@ -44,7 +45,7 @@ def demo(opt):
               # return  # esc to quit
         else:
             break
-            
+    out_video.release()       
     end = time.time()
     seconds = end  - start
     print('FPS', num_frame/seconds)
