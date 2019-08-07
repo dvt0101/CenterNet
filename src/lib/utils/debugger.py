@@ -219,7 +219,7 @@ class Debugger(object):
     for i, v in self.imgs.items():
       # print(v.shape)
       id += 1
-      cv2.imwrite('/home/vietthangtik15/dataset/{}.jpg'.format(id), v)
+      cv2.imwrite('/home/vietthangtik15/dataset/{}.jpg'.format(str(v[0][0])), v)
       # cv2.imwrite("/home/vietthangtik15/dataset/ouput/" + i + ".jpg", v) 
       # if cv2.waitKey(0 if pause else 1) == 27:
       #   import sys
