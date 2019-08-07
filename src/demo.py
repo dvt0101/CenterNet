@@ -33,7 +33,7 @@ def demo(opt):
         if re == True:
           # img = cv2.flip(img, 0)
           num_frame += 1
-          out_video.write(img)
+          # out_video.write(img)
           ret = detector.run(img, out_video)
           
           time_str = ''
