@@ -79,7 +79,8 @@ class Debugger(object):
       bg * (1 - trans)).astype(np.uint8)
   
   def show_img(self, pause = False, imgId = 'default'):
-    cv2.imshow('{}'.format(imgId), self.imgs[imgId])
+    # cv2.imshow('{}'.format(imgId), self.imgs[imgId])
+    cv2.imimwrite('{}'.format(imgId), self.imgs[imgId])
     if pause:
       cv2.waitKey()
   
@@ -233,10 +234,10 @@ class Debugger(object):
           self.plt.imshow(v)
       self.plt.show()
 
-  def save_img(self, imgId='default', path='./cache/debug/'):
+  def save_img(self, imgId='default', path='/home/vietthangtik15/dataset/'):
     cv2.imwrite(path + '{}.png'.format(imgId), self.imgs[imgId])
     
-  def save_all_imgs(self, path='./cache/debug/', prefix='', genID=False):
+  def save_all_imgs(self, path='/home/vietthangtik15/dataset/', prefix='', genID=False):
     if genID:
       try:
         idx = int(np.loadtxt(path + '/id.txt'))
