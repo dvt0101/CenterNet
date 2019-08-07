@@ -33,7 +33,7 @@ def demo(opt):
         num_frame += 1
         # cv2.imshow('input', img)
         ret = detector.run(img)
-        print(ret.shape)
+        print(ret.size)
         out.write(ret)
         time_str = ''
         for stat in time_stats:
