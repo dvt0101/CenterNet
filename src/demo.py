@@ -29,16 +29,17 @@ def demo(opt):
     start = time.time()
     num_frame = 0
     while True:
-        _, img = cam.read()
-        num_frame += 1
-        # cv2.imshow('input', img)
-        ret = detector.run(img, out_video)
-        time_str = ''
-        for stat in time_stats:
-          time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
-        print(time_str)
-        if cv2.waitKey(1) == 27:
-            return  # esc to quit
+        re, img = cam.read()
+        if re == True:
+          num_frame += 1
+          # cv2.imshow('input', img)
+          ret = detector.run(img, out_video)
+          time_str = ''
+          for stat in time_stats:
+            time_str = time_str + '{} {:.3f}s |'.format(stat, ret[stat])
+          print(time_str)
+          # if cv2.waitKey(1) == 27:
+              # return  # esc to quit
     end = time.time()
     seconds = end  - start
     print('FPS', num_frame/seconds)
